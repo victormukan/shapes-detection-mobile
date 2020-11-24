@@ -1,18 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
   ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Image
+  View
 } from 'react-native';
 import axios from 'axios';
 import { Button } from 'react-native-elements';
+import { ResultImage } from '../components/ResultImage';
 
 
-export const ResultsScreen = ({ route: { params: { uri }}}) => {
+export const ResultsScreen = ({ navigation, route: { params: { uri }}}) => {
+  const [resultImages, setResultImages] = useState(null);
 
   const loadImage = async () => {
     try {
@@ -26,26 +23,44 @@ export const ResultsScreen = ({ route: { params: { uri }}}) => {
         data: form_data
       };
 
-      console.log('into load')
-      // const res = await axios.get('http://34.245.7.196:4000/hc');
-      // const res = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
       const res = await axios.post('http://34.245.7.196:4000/upload', form_data, request_config);
       console.log(res.data)
+      setResultImages(res.data.body)
     } catch (err) {
       console.log(err)
     }
   }
   return (
-    <>
-      <Image
-        style={{ width: '50%', height:'50%', margin:'5%'}}
-        source={{ uri }}
+    <ScrollView>
+      <View style={{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      }}>
+      <ResultImage
+        uri={uri}
+        navigation={navigation}
       />
 
       <Button
-        title="Take photo"
+        title="Analyze print"
         onPress={loadImage}
       />
-    </>
+      { resultImages && 
+      <>
+        <ResultImage
+          uri={resultImages.circles}
+          navigation={navigation}
+        />
+       
+        <ResultImage
+          uri={resultImages.lines}
+          navigation={navigation}
+        />
+      </>
+      }
+      </View>
+    </ScrollView>
   );
 }
