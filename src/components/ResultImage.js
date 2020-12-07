@@ -15,7 +15,7 @@ export const ResultImage = ({ uri, navigation }) => {
     <TouchableOpacity onPress={() => navigation.navigate("Image FullScreen", { uri })}>
       <Image
         style={{
-          width: width * .8,
+          width: width * .6,
           aspectRatio: 1,
           resizeMode: 'contain'
         }}        

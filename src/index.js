@@ -14,9 +14,22 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="How to make photo">
-        <Stack.Screen name="How to make photo" component={TakePhotoScreen} />
-        <Stack.Screen name="Camera" component={CameraScreen} />
-        <Stack.Screen name="Results" component={ResultsScreen} />
+        <Stack.Screen
+          name="How to make photo"
+          component={TakePhotoScreen} 
+          options={{ title: 'Інструкція' }}
+        />
+        <Stack.Screen
+          name="Camera" 
+          component={CameraScreen}
+          options={{ title: 'Фото' }}
+        />
+        <Stack.Screen 
+          name="Results" 
+          component={ResultsScreen}
+          options={{ title: 'Фото' }}
+
+        />
         <Stack.Screen name="Image FullScreen" component={ImageFullScreen} />
       </Stack.Navigator>
     </NavigationContainer>

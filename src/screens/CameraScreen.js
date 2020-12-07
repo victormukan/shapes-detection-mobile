@@ -58,7 +58,7 @@ export const CameraScreen = ({ navigation }) => {
         }} />
       <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }}>
         <TouchableOpacity onPress={takePicture} style={styles.capture}>
-          <Text style={{ fontSize: 14 }}> Make photo </Text>
+          <Text style={{ fontSize: 14 }}>Зробити фото</Text>
         </TouchableOpacity>
       </View>
 
