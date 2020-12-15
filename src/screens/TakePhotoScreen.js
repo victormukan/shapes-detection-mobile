@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
-import { Card, ListItem, Button, Icon } from 'react-native-elements'
+import { Card, Button } from 'react-native-elements'
 import ImagePicker from 'react-native-image-picker';
 import axios from 'axios';
 
@@ -13,19 +13,6 @@ export const TakePhotoScreen = ({ navigation }) => {
     });
   }
 
-  useEffect(() => {
-    const fetch = async() => {
-      console.log('in fetch')
-      try {
-        const res = await axios.get('http://10.0.2.2:4000/hc');
-        console.log(res);
-      } catch(err) {
-        console.log(err);
-      }
-    }
-
-    fetch();
-  }, [])
   return (
     <View style={{ display: 'flex' }}>
       <Card>
@@ -54,6 +41,13 @@ export const TakePhotoScreen = ({ navigation }) => {
         <Button
           title="Вибрати існуюче"
           onPress={choosePhoto}
+        />
+      </View>
+
+      <View style={{ width: '70%', marginHorizontal: '15%', marginTop: 50}}>
+        <Button
+          title="Історія"
+          onPress={() => navigation.navigate("History")}
         />
       </View>
     </View>

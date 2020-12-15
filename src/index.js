@@ -7,6 +7,8 @@ import { TakePhotoScreen } from './screens/TakePhotoScreen';
 import { CameraScreen } from './screens/CameraScreen';
 import { ResultsScreen } from './screens/ResultsScreen';
 import { ImageFullScreen } from './screens/ImageFullScreen';
+import { History } from './screens/History';
+import { HistoryItem } from './screens/HistoryItem';
 
 const Stack = createStackNavigator();
 
@@ -28,9 +30,23 @@ export default function App() {
           name="Results" 
           component={ResultsScreen}
           options={{ title: 'Фото' }}
-
         />
-        <Stack.Screen name="Image FullScreen" component={ImageFullScreen} />
+        <Stack.Screen 
+          name="Image FullScreen"
+          component={ImageFullScreen}
+          options={{ title: 'Фото' }}
+        />
+        <Stack.Screen 
+          name="History"
+          component={History}
+          options={{ title: 'Історія' }}
+        />
+        <Stack.Screen 
+          name="HistoryItem"
+          component={HistoryItem}
+          options={{ title: 'Історія' }}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
